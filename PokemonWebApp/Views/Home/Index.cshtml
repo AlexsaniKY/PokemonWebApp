@@ -1,8 +1,15 @@
-﻿
+﻿@model PokemonWebApp.Domain.Pokedex
+
 <h4>Pokemon Application</h4>
 <div class="container">
     <div id="pokemon">
-            @Html.ActionLink("Bulbasaur", "GET", "Pokemon", new { id = 1}, null)
+        @{
+            foreach (var pokemon in Model.Values) {
+                <div id="pokemon.Id">
+                    @Html.Raw(pokemon.Name)
+                </div>
+            }
+        }
     </div>
 </div>
 

@@ -11,7 +11,9 @@ namespace PokemonWebApp.Domain
             fire,
             water,
             grass,
-            normal
+            normal,
+            ghost,
+            electric
         }
 
         public Types MyType { get; set; }

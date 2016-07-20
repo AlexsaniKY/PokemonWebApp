@@ -1,4 +1,5 @@
 ﻿using PokemonWebApp.Services;
+using PokemonWebApp.Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,20 @@ namespace PokemonWebApp.Controllers
             _pokeService = new PokemonService();
         }
 
-        // GET: Pokemon
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult Get(int id) {
             return View(_pokeService.GetPokemon(id));
         }
 
+        [HttpGet]
+        public ActionResult AddPokemon() {
+            return View(new PokemonViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult AddPokemon(PokemonViewModel newPokemon) {
+            _pokeService.AddPokemon(newPokemon);
+
+            return RedirectToAction("Index", "Home", "Home");
+        }
     }
 }

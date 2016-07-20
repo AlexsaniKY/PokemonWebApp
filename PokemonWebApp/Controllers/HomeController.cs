@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokemonWebApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,14 @@ namespace PokemonWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
+        internal PokemonService _pokeService;
+
+        public HomeController() {
+            _pokeService = new PokemonService();
+        }
+
+        public ActionResult Index() {
+            return View(_pokeService.GetPokedex());
         }
 
         public ActionResult About()

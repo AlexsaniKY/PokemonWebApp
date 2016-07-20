@@ -8,17 +8,21 @@ namespace PokemonWebApp.Infrastructure
 {
     public class PokemonRepo
     {
-        internal static Dictionary<int, Pokemon> _pokedex { get; set; }
+        internal Pokedex _pokedex { get; set; }
 
         public PokemonRepo()
         {
-            _pokedex = new Dictionary<int, Pokemon>
+            _pokedex = new Pokedex
             {
                 { 1, new Pokemon(1, "Bulbasaur", Domain.Type.Types.grass, 1) },
                 { 2, new Pokemon(2, "Ivysaur", Domain.Type.Types.grass, 5) },
                 { 3, new Pokemon(1, "Venusaur", Domain.Type.Types.grass, 10) }
 
             };
+        }
+
+        public void AddPokemon(Pokemon newPokemon) {
+            _pokedex.Add(newPokemon.Id, newPokemon);
         }
 
         public Pokemon GetPokemon(int id)
@@ -28,5 +32,8 @@ namespace PokemonWebApp.Infrastructure
                     select p.Value).FirstOrDefault();
         }
 
+        public Pokedex GetPokedex() {
+            return _pokedex;
+        }
     }
 }

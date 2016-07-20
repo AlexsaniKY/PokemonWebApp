@@ -1,5 +1,6 @@
 ﻿using PokemonWebApp.Domain;
 using PokemonWebApp.Infrastructure;
+using PokemonWebApp.Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,14 @@ namespace PokemonWebApp.Services
 
         public Pokemon GetPokemon(int id) {
             return _repo.GetPokemon(id);
+        }
+
+        public void AddPokemon(PokemonViewModel newPokemon) {
+            _repo.AddPokemon(new Pokemon(newPokemon));
+        }
+
+        public Pokedex GetPokedex() {
+            return _repo.GetPokedex();
         }
     }
 }
