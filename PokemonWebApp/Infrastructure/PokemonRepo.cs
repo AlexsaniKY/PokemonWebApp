@@ -6,11 +6,11 @@ using System.Web;
 
 namespace PokemonWebApp.Infrastructure
 {
-    public class PokemonRepo
+    public static class PokemonRepo
     {
-        internal Pokedex _pokedex { get; set; }
+        internal static Pokedex _pokedex { get; set; }
 
-        public PokemonRepo()
+        static PokemonRepo()
         {
             _pokedex = new Pokedex
             {
@@ -21,18 +21,18 @@ namespace PokemonWebApp.Infrastructure
             };
         }
 
-        public void AddPokemon(Pokemon newPokemon) {
+        public static void AddPokemon(Pokemon newPokemon) {
             _pokedex.Add(newPokemon.Id, newPokemon);
         }
 
-        public Pokemon GetPokemon(int id)
+        public static Pokemon GetPokemon(int id)
         {
             return (from p in _pokedex.AsEnumerable()
                     where p.Key == id
                     select p.Value).FirstOrDefault();
         }
 
-        public Pokedex GetPokedex() {
+        public static Pokedex GetPokedex() {
             return _pokedex;
         }
     }
