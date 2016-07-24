@@ -4,12 +4,14 @@
 <div class="container">
     <div id="pokemon">
         @{
-            foreach (var pokemon in Model.Values) {
+            foreach (var pokemon in Model.Values)
+            {
                 <div id="pokemon.Id">
-                    @Html.Raw(pokemon.Name)
+                    @Html.ActionLink(pokemon.Name.ToString(), "get", "pokemon", new { id = pokemon.Id }, null)
+                    (@Html.Raw(pokemon.Type.MyType)) : beginning at level:
+                    @Html.Raw(pokemon.Level)
                 </div>
-            }
+                        }
         }
     </div>
 </div>
-
