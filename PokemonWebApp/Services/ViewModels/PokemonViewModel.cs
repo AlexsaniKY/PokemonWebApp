@@ -2,6 +2,9 @@
 
 
 namespace PokemonWebApp.Services.ViewModels {
+    /// <summary>
+    /// ViewModel version of Pokemon to allow Views to instantiate or access a Pokemon
+    /// </summary>
     public class PokemonViewModel {
 
         public PokemonViewModel() { }
