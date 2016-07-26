@@ -9,7 +9,7 @@ namespace PokemonWebApp.Services.ViewModels {
         public PokemonViewModel(Pokemon pokemon) {
             Id = pokemon.Id;
             Name = pokemon.Name;
-            Type = pokemon.Type.ToString();
+            Type = pokemon.Type.MyType.ToString();
             Level = pokemon.Level;
         }
 
