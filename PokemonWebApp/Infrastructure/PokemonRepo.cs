@@ -16,13 +16,26 @@ namespace PokemonWebApp.Infrastructure
             {
                 { 1, new Pokemon(1, "Bulbasaur", Domain.Type.Types.grass, 1) },
                 { 2, new Pokemon(2, "Ivysaur", Domain.Type.Types.grass, 5) },
-                { 3, new Pokemon(1, "Venusaur", Domain.Type.Types.grass, 10) }
+                { 3, new Pokemon(3, "Venusaur", Domain.Type.Types.grass, 10) }
 
             };
         }
 
         public static void AddPokemon(Pokemon newPokemon) {
-            _pokedex.Add(newPokemon.Id, newPokemon);
+            try
+            {
+                _pokedex.Add(newPokemon.Id, newPokemon);
+            }
+            catch (Exception d){
+            }
+        }
+
+        public static void DeletePokemon(int id)
+        {
+            if (_pokedex.ContainsKey(id)) {
+                _pokedex.Remove(id);
+
+            }
         }
 
         public static Pokemon GetPokemon(int id)

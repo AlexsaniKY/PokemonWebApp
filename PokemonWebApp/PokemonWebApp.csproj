@@ -198,6 +198,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pokemon\Get.cshtml" />
     <Content Include="Views\Pokemon\AddPokemon.cshtml" />
+    <Content Include="Views\Pokemon\Delete.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Pokemon\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

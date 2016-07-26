@@ -17,7 +17,19 @@ namespace PokemonWebApp.Controllers
         }
 
         public ActionResult Get(int id) {
-            return View(_pokeService.GetPokemon(id));
+            return View(_pokeService.GetPokemonViewModel(id));
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            return View(_pokeService.GetPokemonViewModel(id));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id) {
+            _pokeService.DeletePokemon(id);
+            return View("~/Views/Home/Index.cshtml", _pokeService.GetPokedex());
         }
 
         [HttpGet]
@@ -28,8 +40,11 @@ namespace PokemonWebApp.Controllers
         [HttpPost]
         public ActionResult AddPokemon(PokemonViewModel newPokemon) {
             _pokeService.AddPokemon(newPokemon);
+            return View("~/Views/Home/Index.cshtml", _pokeService.GetPokedex());
+        }
 
-            return RedirectToAction("Index", "Home", "Home");
+        public ActionResult Edit(int id) {
+            return View(_pokeService.GetPokemonViewModel(id));
         }
     }
 }

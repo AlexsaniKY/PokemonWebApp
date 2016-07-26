@@ -11,6 +11,7 @@ namespace PokemonWebApp.Controllers
     {
         internal PokemonService _pokeService;
 
+
         public HomeController() {
             _pokeService = new PokemonService();
         }
@@ -19,17 +20,10 @@ namespace PokemonWebApp.Controllers
             return View(_pokeService.GetPokedex());
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+        [HttpGet]
+        [Route("Error/{id}")]
+        public ActionResult Error(string id) {
+            ViewBag.ErrorMessage = id;
             return View();
         }
     }
