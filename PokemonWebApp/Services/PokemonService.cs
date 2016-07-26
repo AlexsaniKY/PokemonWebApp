@@ -16,20 +16,30 @@ namespace PokemonWebApp.Services
         }
 
         public PokemonViewModel GetPokemonViewModel(int id) {
-            return new PokemonViewModel(PokemonRepo.GetPokemon(id));
+            Pokemon returnval = PokemonRepo.GetPokemon(id);
+            if (returnval == null)
+                return null;
+            else return new PokemonViewModel(returnval);
         }
 
-        public void AddPokemon( PokemonViewModel newPokemon) {
-            PokemonRepo.AddPokemon(new Pokemon(newPokemon));
-            
+        public bool AddPokemon( PokemonViewModel newPokemon) {
+            return PokemonRepo.AddPokemon(new Pokemon(newPokemon));
         }
 
-        public void DeletePokemon(int removeId){
-            PokemonRepo.DeletePokemon(removeId);
+        public bool DeletePokemon(int removeId){
+            return PokemonRepo.DeletePokemon(removeId);
+        }
+
+        public bool HasPokemon(int id) {
+            return PokemonRepo.HasPokemon(id);
         }
 
         public Pokedex GetPokedex() {
             return PokemonRepo.GetPokedex();
+        }
+
+        public bool UpdatePokemon(PokemonViewModel alteredPokemon) {
+            return PokemonRepo.UpdatePokemon(new Pokemon(alteredPokemon));
         }
     }
 }

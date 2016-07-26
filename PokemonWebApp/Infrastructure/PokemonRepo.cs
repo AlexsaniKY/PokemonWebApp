@@ -21,21 +21,37 @@ namespace PokemonWebApp.Infrastructure
             };
         }
 
-        public static void AddPokemon(Pokemon newPokemon) {
+        public static bool HasPokemon(int id) {
+            return _pokedex.ContainsKey(id);
+        }
+
+        public static bool AddPokemon(Pokemon newPokemon) {
             try
             {
                 _pokedex.Add(newPokemon.Id, newPokemon);
+                return true;
             }
             catch (Exception d){
+                return false;
             }
         }
 
-        public static void DeletePokemon(int id)
+        public static bool UpdatePokemon(Pokemon alteredPokemon) {
+            if (_pokedex.ContainsKey(alteredPokemon.Id))
+            {
+                _pokedex[alteredPokemon.Id] = alteredPokemon;
+                return true;
+            }
+            else return false;
+        }
+
+        public static bool DeletePokemon(int id)
         {
             if (_pokedex.ContainsKey(id)) {
                 _pokedex.Remove(id);
-
+                return true;
             }
+            else return false;
         }
 
         public static Pokemon GetPokemon(int id)
