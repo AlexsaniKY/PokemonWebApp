@@ -54,6 +54,7 @@ namespace PokemonWebApp.Controllers
         /// <param name="id">an Id matching a stored Pokemon</param>
         /// <returns>Index of all remaining Pokemon if successful, or HttpNotFoundResult if Pokemon is not found</returns>
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id) {
             if (_pokeService.DeletePokemon(id))
                 return View("~/Views/Home/Index.cshtml", _pokeService.GetPokedex());
